@@ -42,8 +42,8 @@ window.onload = function () {
   // ==== 动画代码 ====
 
   // 文字动画速度范围，单位ms
-  const MIN_DURATION = 8000;
-  const MAX_DURATION = 16000;
+  const MIN_DURATION = 6000;
+  const MAX_DURATION = 13000;
 
   function animateText(el) {
     // 起始位置X为当前位置left
