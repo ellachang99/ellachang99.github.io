@@ -1,64 +1,93 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>欢迎回家</title>
-  <style>
-    @font-face {
-      font-family: 'HYPixel';
-      src: url('fonts/HYPixel.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>欢迎回家</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    html, body {
-      margin: 0; padding: 0; height: 100%;
-      display: flex; justify-content: center; align-items: center;
-      background: black;
-    }
+  /* 1. 这个wrapper撑满屏幕宽度，保持比例 */
+  .wrapper {
+    width: 90vw; /* 最大宽度90%视口宽度 */
+    max-width: 1440px; /* 最大不超过设计宽度 */
+    aspect-ratio: 1440 / 1024; /* 保持宽高比 */
+    position: relative;
+  }
 
-    .container {
-      width: 1440px;
-      height: 1024px;
-      position: relative;
-      background: linear-gradient(0deg, #810000 0%, black 44%);
-      transform-origin: top left;
-      transform: scale(calc(min(100vw / 1440, 100vh / 1024)));
-    }
+  /* 2. 固定设计尺寸container，定位基准 */
+  .container {
+    width: 1440px;
+    height: 1024px;
+    position: absolute;
+    top: 0; left: 0;
 
-    .text {
-      width: 335px;
-      height: 26px;
-      color: white;
-      font-size: 20px;
-      font-family: 'HYPixel', sans-serif;
-      font-weight: 400;
-      letter-spacing: 1.6px;
-      position: absolute;
-      word-wrap: break-word;
-    }
+    background: linear-gradient(0deg, #810000 0%, black 44%);
+    transform-origin: top left;
+  }
 
-    img {
-      position: absolute;
-    }
-  </style>
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="text" style="left: 29px; top: 472px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 228px; top: 545px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 296px; top: 280px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 967px; top: 176px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 985px; top: 519px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 1088px; top: 686px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 614px; top: 725px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 95px; top: 846px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 1062px; top: 952px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 727px; top: 902px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 353px; top: 15px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 163px; top: 116px;">亲爱的社区居民，欢迎您回家。</div>
-    <img src="images/HappyCommunity.png" width="422.8" height="151" style="left: 509px; top: 353px;" />
+  <div class="wrapper" id="wrapper">
+    <div class="container" id="container">
+      <!-- 你的文字和图片，保持原像素绝对定位 -->
+      <div class="text" style="left: 29px; top: 472px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 228px; top: 545px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 296px; top: 280px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 967px; top: 176px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 985px; top: 519px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 1088px; top: 686px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 614px; top: 725px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 95px; top: 846px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 1062px; top: 952px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 727px; top: 902px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 353px; top: 15px;">亲爱的社区居民，欢迎您回家。</div>
+      <div class="text" style="left: 163px; top: 116px;">亲爱的社区居民，欢迎您回家。</div>
+      <img src="images/HappyCommunity.png" width="422.8" height="151" style="left: 509px; top: 353px; position: absolute;" />
+    </div>
   </div>
+
+<script>
+  const wrapper = document.getElementById('wrapper');
+  const container = document.getElementById('container');
+
+  function scaleContainer() {
+    // wrapper实际宽高
+    const w = wrapper.clientWidth;
+    const h = wrapper.clientHeight;
+
+    // 设计尺寸
+    const designW = 1440;
+    const designH = 1024;
+
+    // 计算缩放比例（宽高比按比例缩放）
+    const scale = Math.min(w / designW, h / designH);
+
+    container.style.transform = `scale(${scale})`;
+  }
+
+  window.addEventListener('resize', scaleContainer);
+  window.addEventListener('load', scaleContainer);
+</script>
+<style>
+  .text {
+    position: absolute;
+    width: 335px;
+    height: 26px;
+    color: white;
+    font-size: 20px;
+    font-family: 'HYPixel', sans-serif;
+    font-weight: 400;
+    letter-spacing: 1.6px;
+    word-wrap: break-word;
+  }
+</style>
 </body>
 </html>
