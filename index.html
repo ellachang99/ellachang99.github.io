@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>欢迎回家</title>
   <style>
     @font-face {
@@ -17,14 +18,11 @@
       height: 100%;
       width: 100%;
       overflow: hidden;
-    }
-
-    body {
+      font-family: 'HYPixel', sans-serif;
+      background: linear-gradient(0deg, #810000 0%, black 44%);
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(0deg, #810000 0%, black 44%);
-      font-family: 'HYPixel', sans-serif;
     }
 
     .container {
@@ -46,16 +44,36 @@
       font-size: 1.4vw;
       letter-spacing: 0.1em;
       white-space: nowrap;
-      user-select: none;
     }
 
-    img {
+    /* HappyCommunity 图片 */
+    #happy-image {
       position: absolute;
       width: 30vw;
       height: auto;
       left: 35%;
       top: 33%;
       user-select: none;
+    }
+
+    /* Hover 按钮容器 */
+    #hover-button {
+      position: absolute;
+      left: 50%; /* 初始先居中 */
+      top: calc(33% + 30vw + 10px); /* 图片顶部33% + 图片高度30vw + 10px间距 */
+      transform: translateX(-50%);
+      cursor: pointer;
+      user-select: none;
+      width: 5vw;
+      height: auto;
+      transition: all 0.3s ease;
+    }
+
+    /* 按钮图片 */
+    #hover-button img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
   </style>
 </head>
@@ -97,8 +115,33 @@
       <div class="text" style="left: 541px; top: 954px;">亲爱的社区居民，欢迎您回家。</div>
       <div class="text" style="left: 199px; top: 980px;">亲爱的社区居民，欢迎您回家。</div>
     </div>
-    <img src="images/HappyCommunity.png" alt="社区欢迎图" />
+
+    <img id="happy-image" src="images/HappyCommunity.png" alt="社区快乐图" />
+
+    <div id="hover-button" title="幸福小区">
+      <img src="images/SadFace.png" alt="表情按钮" />
+    </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hoverButton = document.getElementById('hover-button');
+      const buttonImg = hoverButton.querySelector('img');
+
+      hoverButton.addEventListener('mouseenter', () => {
+        buttonImg.src = 'images/SmileFace.png';
+      });
+
+      hoverButton.addEventListener('mouseleave', () => {
+        buttonImg.src = 'images/SadFace.png';
+      });
+
+      hoverButton.addEventListener('click', () => {
+        // 跳转到新页面，确保页面存在
+        window.location.href = 'xingfuxiaoqu.html';
+      });
+    });
+  </script>
 
   <script src="script.js"></script>
 </body>
