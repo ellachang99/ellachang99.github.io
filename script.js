@@ -1,57 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const texts = document.querySelectorAll('.text');
+  const texts = Array.from(document.querySelectorAll('.text'));
   const screenWidth = window.innerWidth;
 
-  // 1. 计算所有文字的左边界和右边界
+  // 1. 计算所有文字左边界和右边界（相对viewport）
   let minLeft = Infinity;
   let maxRight = -Infinity;
-  const textPositions = [];
 
   texts.forEach(text => {
     const left = parseFloat(text.style.left);
     const width = text.offsetWidth;
-    const right = left + width;
-
-    textPositions.push({ element: text, left, width });
-
     if (left < minLeft) minLeft = left;
-    if (right > maxRight) maxRight = right;
+    if (left + width > maxRight) maxRight = left + width;
   });
 
-  // 2. 计算整体中心位置
-  const textCenter = (minLeft + maxRight) / 2;
+  // 2. 计算文字包围盒中心和屏幕中心的差值，作为偏移量
+  const textsCenter = (minLeft + maxRight) / 2;
   const screenCenter = screenWidth / 2;
-  const offsetX = screenCenter - textCenter;
+  const offsetX = screenCenter - textsCenter;
 
-  // 3. 调整所有文字初始left，达到视觉居中
-  textPositions.forEach(({ element, left }) => {
-    element.style.left = (left + offsetX) + 'px';
+  // 3. 应用偏移量，调整所有文字初始left，实现视觉居中
+  texts.forEach(text => {
+    const origLeft = parseFloat(text.style.left);
+    text.style.left = (origLeft + offsetX) + 'px';
   });
 
-  // 4. 动画函数，实现文字从当前left向左移动，飞出屏幕后无缝重现
+  // 4. 动画函数，实现从当前位置向左移动，飞出后马上从右侧进入
   function animateText(text) {
-    const screenW = window.innerWidth;
-    const duration = Math.random() * 8000 + 8000; // 8-16秒随机移动
-    let startTime = null;
-
-    // 初始X坐标（数字）
-    let xPos = parseFloat(text.style.left);
     const textWidth = text.offsetWidth;
-    const totalDistance = screenW + textWidth;
+    const duration = Math.random() * 8000 + 8000; // 8~16秒
+
+    let startTime = null;
+    let startX = parseFloat(text.style.left);
+    const totalDistance = screenWidth + textWidth;
 
     function step(timestamp) {
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
       const progress = elapsed / duration;
-      const newX = xPos - progress * totalDistance;
+      const newX = startX - progress * totalDistance;
 
       text.style.left = newX + 'px';
 
       if (newX + textWidth > 0) {
         requestAnimationFrame(step);
       } else {
-        // 飞出左侧屏幕后，从右侧屏幕开始，重置动画
-        xPos = screenW;
+        // 飞出左侧后从右侧重新开始
+        startX = screenWidth;
         startTime = null;
         requestAnimationFrame(step);
       }
@@ -59,43 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(step);
   }
 
-  // 5. 延迟1秒开始动画，确保页面渲染完整
+  // 5. 延迟启动动画，保证渲染完成
   setTimeout(() => {
-    texts.forEach(text => {
-      animateText(text);
-    });
+    texts.forEach(animateText);
   }, 1000);
 
-  // 6. 监听窗口尺寸变化，重新计算居中和重置动画
+  // 6. 窗口尺寸变化时，重新加载页面重新计算居中
   window.addEventListener('resize', () => {
-    // 重新获取窗口宽度
-    const newScreenWidth = window.innerWidth;
-
-    // 重新计算整体中心位置和偏移量
-    let newMinLeft = Infinity;
-    let newMaxRight = -Infinity;
-
-    texts.forEach(text => {
-      // 清除动画，先重置left为原始值
-      text.style.transition = 'none';
-      const originalLeft = parseFloat(text.style.left) - offsetX; // 去掉之前的偏移，得到原始left
-      text.style.left = originalLeft + 'px';
-
-      const width = text.offsetWidth;
-      if (originalLeft < newMinLeft) newMinLeft = originalLeft;
-      if (originalLeft + width > newMaxRight) newMaxRight = originalLeft + width;
-    });
-
-    const newTextCenter = (newMinLeft + newMaxRight) / 2;
-    const newScreenCenter = newScreenWidth / 2;
-    const newOffsetX = newScreenCenter - newTextCenter;
-
-    texts.forEach(text => {
-      const currentLeft = parseFloat(text.style.left);
-      text.style.left = (currentLeft + newOffsetX) + 'px';
-    });
-
-    // 重新启动动画（简单粗暴，刷新页面也可）
     location.reload();
   });
 });
