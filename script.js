@@ -1,43 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
   const texts = document.querySelectorAll('.text');
+  const textWrapper = document.getElementById('text-wrapper');
+  const container = document.querySelector('.container');
 
-  // 延迟1秒后启动动画（可改成按钮点击或立即执行）
-  setTimeout(() => {
-    texts.forEach(text => {
-      const initialLeft = parseFloat(text.style.left); // 初始X坐标
-      const top = parseFloat(text.style.top);           // 固定Y坐标
-      const textWidth = text.offsetWidth;
+  // 获取容器宽度和屏幕宽度
+  function getSizes() {
+    return {
+      wrapperWidth: textWrapper.offsetWidth,
+      containerWidth: container.offsetWidth,
+      screenWidth: window.innerWidth
+    };
+  }
 
-      function animateFromCurrent(xPos) {
-        const screenWidth = window.innerWidth;
-        const duration = Math.random() * 8000 + 8000; // 8s - 16s
-        const totalDistance = screenWidth + textWidth;
+  // 动画函数：从当前位置开始移动并循环
+  function animateText(text, initialLeft, textWidth, wrapperWidth, screenWidth) {
+    const duration = Math.random() * 8000 + 8000; // 8-16秒
+    const totalDistance = wrapperWidth + textWidth + screenWidth;
 
-        let startTime = null;
+    let startTime = null;
 
-        function step(timestamp) {
-          if (!startTime) startTime = timestamp;
-          const elapsed = timestamp - startTime;
-          const progress = elapsed / duration;
+    // 逐帧更新位置
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = elapsed / duration;
 
-          // 新的X坐标 = 当前起始点 - 进度 * 总距离
-          const newX = xPos - progress * totalDistance;
-          text.style.left = `${newX}px`;
-          text.style.top = `${top}px`; // 保持Y不变
+      // 计算当前位置
+      let newX = initialLeft - progress * totalDistance;
 
-          if (newX + textWidth > 0) {
-            requestAnimationFrame(step);
-          } else {
-            // 飞出屏幕左边，立即从屏幕右边重新开始
-            animateFromCurrent(screenWidth);
-          }
-        }
-
-        requestAnimationFrame(step);
+      // 如果文字飞出左侧，重新从右侧进入
+      if (newX + textWidth < 0) {
+        startTime = timestamp;  // 重置动画起点
+        newX = wrapperWidth + screenWidth;  // 从右侧重新进入
       }
 
-      // 第一次动画从HTML定义的初始位置开始
-      animateFromCurrent(initialLeft);
+      // 更新位置
+      text.style.left = `${newX}px`;
+      requestAnimationFrame(step);  // 继续下一帧
+    }
+
+    requestAnimationFrame(step);  // 启动动画
+  }
+
+  // 启动动画，延迟1秒（确保所有元素加载完毕）
+  setTimeout(() => {
+    const { wrapperWidth, screenWidth } = getSizes();
+
+    texts.forEach(text => {
+      const initialLeft = parseFloat(text.style.left);
+      const textWidth = text.offsetWidth;
+
+      animateText(text, initialLeft, textWidth, wrapperWidth, screenWidth);
     });
   }, 1000);
+
+  // 窗口大小改变时，重新加载页面以适配新大小
+  window.addEventListener('resize', () => {
+    location.reload();
+  });
 });
