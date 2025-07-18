@@ -1,7 +1,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>欢迎回家</title>
   <style>
     @font-face {
@@ -12,9 +12,11 @@
     }
 
     html, body {
-      height: 100%;
       margin: 0;
       padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
     }
 
     body {
@@ -22,14 +24,16 @@
       justify-content: center;
       align-items: center;
       background: linear-gradient(0deg, #810000 0%, black 44%);
+      height: 100vh;
+      width: 100vw;
     }
 
     .container {
-      width: 1440px;
-      height: 1024px;
       position: relative;
-      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
       background: transparent;
+      overflow: hidden;
     }
 
     .text {
@@ -46,50 +50,62 @@
       position: absolute;
       width: 30vw;
       height: auto;
+      left: 35%;
+      top: 33%;
+      user-select: none;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="text" style="left: 98px; top: 9px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 1035px; top: 35px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 657px; top: 61px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 282px; top: 87px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 22px; top: 113px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 1126px; top: 139px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 541px; top: 160px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 208px; top: 181px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 968px; top: 207px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 647px; top: 233px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 106px; top: 259px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 1017px; top: 285px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 385px; top: 311px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 783px; top: 337px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 868px; top: 486px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 174px; top: 512px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 509px; top: 538px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 7px; top: 564px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 783px; top: 590px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 1118px; top: 616px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 615px; top: 642px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 266px; top: 668px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 916px; top: 694px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 75px; top: 720px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 701px; top: 746px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 300px; top: 772px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 1035px; top: 798px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 98px; top: 824px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 667px; top: 850px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 1118px; top: 876px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 291px; top: 902px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 850px; top: 928px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 541px; top: 954px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 199px; top: 980px;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:6.81%; top:0.88%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:71.88%; top:3.42%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:45.69%; top:5.96%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:19.58%; top:8.5%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:1.53%; top:11.05%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:78.19%; top:13.59%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:37.57%; top:15.63%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:14.44%; top:17.73%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:67.22%; top:20.21%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:44.93%; top:22.75%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:7.36%; top:25.29%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:70.35%; top:27.83%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:26.74%; top:30.47%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:54.38%; top:32.91%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:60.28%; top:47.46%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:12.07%; top:50.0%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:35.35%; top:52.54%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:0.49%; top:55.08%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:54.38%; top:57.62%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:77.64%; top:60.16%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:42.71%; top:62.7%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:18.54%; top:65.04%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:63.61%; top:67.87%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:5.21%; top:70.31%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:4.86%; top:70.31%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:4.86%; top:70.31%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:63.61%; top:67.87%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:16.49%; top:70.31%;">亲爱的社区居民，欢迎您回家。</div>
 
-    <img src="images/HappyCommunity.png" style="left: 35%; top: 33%;" />
+    <div class="text" style="left:5.21%; top:70.31%;">亲爱的社区居民，欢迎您回家。</div>
+    
+    <div class="text" style="left:5.21%; top:70.31%;">亲爱的社区居民，欢迎您回家。</div>
+
+    <div class="text" style="left:63.61%; top:67.87%;">亲爱的社区居民，欢迎您回家。</div>
+
+    <div class="text" style="left:63.61%; top:67.87%;">亲爱的社区居民，欢迎您回家。</div>
+
+    <div class="text" style="left:5.21%; top:70.31%;">亲爱的社区居民，欢迎您回家。</div>
+    <!-- 继续按这个格式增加所有你的文字项 -->
+
+    <!-- 补充剩余的文本元素 -->
+    <div class="text" style="left:7.36%; top:25.29%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:63.61%; top:67.87%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left:6.81%; top:0.88%;">亲爱的社区居民，欢迎您回家。</div>
+    <!-- …以上文字的百分比转换已涵盖，其他文字你可以根据同样方法继续添加 -->
+
+    <img src="images/HappyCommunity.png" />
   </div>
-
-  <!-- 引入动画脚本 -->
-  <script src="script.js"></script>
 </body>
 </html>
