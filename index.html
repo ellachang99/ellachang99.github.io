@@ -1,60 +1,68 @@
-<html lang="zh-CN">
+<html lang="zh-CN"> 
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>欢迎回家</title>
-<style>
-  @font-face {
-    font-family: 'HYPixel';
-    src: url('fonts/HYPixel.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>欢迎回家</title>
+  <style>
+    @font-face {
+      font-family: 'HYPixel';
+      src: url('fonts/HYPixel.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-  html, body {
-    margin: 0; padding: 0; height: 100%; width: 100%;
-  }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
 
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(0deg, #810000 0%, black 44%);
-  }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(0deg, #810000 0%, black 44%);
+    }
 
-  .container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    /* 不设置宽高固定，撑满父级 */
-  }
+    .container {
+      position: relative;
+      background: transparent;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-  .text-wrapper {
-    position: relative;
-    margin: 0 auto; /* 先让它居中 */
-  }
+    #text-wrapper {
+      position: relative;
+      background: transparent;
+    }
 
-  .text {
-    position: absolute;
-    color: white;
-    font-size: 1.4vw;
-    font-family: 'HYPixel', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    white-space: nowrap;
-  }
+    .text {
+      position: absolute;
+      color: white;
+      font-size: 1.4vw;
+      font-family: 'HYPixel', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
 
-  img {
-    position: absolute;
-    width: 30vw;
-    height: auto;
-  }
-</style>
+    img {
+      position: absolute;
+      width: 30vw;
+      height: auto;
+      left: 35%;
+      top: 33%;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <div class="text-wrapper" id="text-wrapper">
+    <div id="text-wrapper">
       <div class="text" style="left: 98px; top: 9px;">亲爱的社区居民，欢迎您回家。</div>
       <div class="text" style="left: 1035px; top: 35px;">亲爱的社区居民，欢迎您回家。</div>
       <div class="text" style="left: 657px; top: 61px;">亲爱的社区居民，欢迎您回家。</div>
@@ -89,54 +97,10 @@
       <div class="text" style="left: 850px; top: 928px;">亲爱的社区居民，欢迎您回家。</div>
       <div class="text" style="left: 541px; top: 954px;">亲爱的社区居民，欢迎您回家。</div>
       <div class="text" style="left: 199px; top: 980px;">亲爱的社区居民，欢迎您回家。</div>
-
-      <img src="images/HappyCommunity.png" style="left: 35%; top: 33%;" />
     </div>
+    <img src="images/HappyCommunity.png" alt="Happy Community" />
   </div>
 
-  <script>
-    window.onload = function() {
-      const wrapper = document.getElementById('text-wrapper');
-      const texts = wrapper.querySelectorAll('.text');
-
-      let minLeft = Infinity, minTop = Infinity;
-      let maxRight = -Infinity, maxBottom = -Infinity;
-
-      // 先遍历，计算所有文字包围盒
-      texts.forEach(el => {
-        const left = parseFloat(el.style.left);
-        const top = parseFloat(el.style.top);
-        const width = el.offsetWidth;
-        const height = el.offsetHeight;
-
-        if(left < minLeft) minLeft = left;
-        if(top < minTop) minTop = top;
-        if(left + width > maxRight) maxRight = left + width;
-        if(top + height > maxBottom) maxBottom = top + height;
-      });
-
-      const boxWidth = maxRight - minLeft;
-      const boxHeight = maxBottom - minTop;
-
-      // 设置wrapper宽高为包围盒尺寸
-      wrapper.style.width = boxWidth + 'px';
-      wrapper.style.height = boxHeight + 'px';
-
-      // 水平居中wrapper，给container宽度减去wrapper宽度的一半作为margin-left
-      // 这里wrapper父容器是.container，宽度100%，所以用viewport宽度
-      const containerWidth = wrapper.parentElement.clientWidth;
-      const marginLeft = (containerWidth - boxWidth) / 2;
-      wrapper.style.marginLeft = marginLeft + 'px';
-
-      // 把所有文字位置调整到以包围盒左上角为坐标原点
-      texts.forEach(el => {
-        const left = parseFloat(el.style.left);
-        const top = parseFloat(el.style.top);
-
-        el.style.left = (left - minLeft) + 'px';
-        el.style.top = (top - minTop) + 'px';
-      });
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
