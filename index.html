@@ -39,7 +39,7 @@
     #text-wrapper {
       position: relative;
       background: transparent;
-      /* 宽高将由JS设置 */
+      /* 宽高不固定，文字坐标绝对定位 */
     }
 
     .text {
@@ -50,7 +50,7 @@
       font-weight: 400;
       letter-spacing: 0.1em;
       white-space: nowrap;
-      will-change: transform; /* 性能优化 */
+      will-change: left; /* 动画优化 */
     }
 
     img {
