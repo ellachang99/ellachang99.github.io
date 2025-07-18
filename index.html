@@ -12,9 +12,10 @@
       font-style: normal;
     }
 
-    body {
-      margin: 0;
-      padding: 0;
+    html, body {
+      margin: 0; padding: 0; height: 100%;
+      display: flex; justify-content: center; align-items: center;
+      background: black;
     }
 
     .container {
@@ -22,7 +23,8 @@
       height: 1024px;
       position: relative;
       background: linear-gradient(0deg, #810000 0%, black 44%);
-      overflow: hidden;
+      transform-origin: top left;
+      transform: scale(calc(min(100vw / 1440, 100vh / 1024)));
     }
 
     .text {
