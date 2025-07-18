@@ -1,62 +1,76 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>欢迎回家</title>
   <style>
+    /* 字体引入 */
     @font-face {
       font-family: 'HYPixel';
-      src: url('fonts/HYPixel.ttf') format('truetype');
+      src: url('fonts/HYPixel.woff') format('woff');
       font-weight: normal;
       font-style: normal;
     }
 
-    body {
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden; /* 防止出现滚动条 */
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(0deg, #810000 0%, black 44%);
     }
 
     .container {
-      width: 1440px;
-      height: 1024px;
+      width: 100vw;
+      height: 100vh;
       position: relative;
-      background: linear-gradient(0deg, #810000 0%, black 44%);
+      background: transparent; /* ← 修复点 */
       overflow: hidden;
     }
 
     .text {
-      width: 335px;
-      height: 26px;
+      position: absolute;
       color: white;
-      font-size: 20px;
+      font-size: 1.4vw; /* 根据屏幕宽度自适应 */
       font-family: 'HYPixel', sans-serif;
       font-weight: 400;
-      letter-spacing: 1.6px;
-      position: absolute;
-      word-wrap: break-word;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
     }
 
     img {
       position: absolute;
+      width: 30vw;
+      height: auto;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="text" style="left: 29px; top: 472px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 228px; top: 545px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 296px; top: 280px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 967px; top: 176px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 985px; top: 519px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 1088px; top: 686px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 614px; top: 725px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 95px; top: 846px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 1062px; top: 952px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 727px; top: 902px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 353px; top: 15px;">亲爱的社区居民，欢迎您回家。</div>
-    <div class="text" style="left: 163px; top: 116px;">亲爱的社区居民，欢迎您回家。</div>
-    <img src="images/HappyCommunity.png" width="422.8" height="151" style="left: 509px; top: 353px;" />
+    <!-- 文本 -->
+    <div class="text" style="left: 2%; top: 45%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 15%; top: 53%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 20%; top: 27%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 67%; top: 17%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 68%; top: 51%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 75%; top: 67%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 42%; top: 71%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 7%; top: 82%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 73%; top: 93%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 50%; top: 88%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 24%; top: 1%;">亲爱的社区居民，欢迎您回家。</div>
+    <div class="text" style="left: 11%; top: 11%;">亲爱的社区居民，欢迎您回家。</div>
+
+    <!-- 图片 -->
+    <img src="images/HappyCommunity.png" style="left: 35%; top: 33%;" />
   </div>
 </body>
 </html>
