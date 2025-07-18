@@ -1,4 +1,4 @@
-<html lang="zh-CN"> 
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,7 @@
       padding: 0;
       height: 100%;
       width: 100%;
+      overflow: hidden;
     }
 
     body {
@@ -23,34 +24,21 @@
       justify-content: center;
       align-items: center;
       background: linear-gradient(0deg, #810000 0%, black 44%);
+      font-family: 'HYPixel', sans-serif;
     }
 
     .container {
       position: relative;
-      background: transparent;
-      overflow: hidden;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #text-wrapper {
-      position: relative;
-      background: transparent;
-      /* 宽高不固定，文字坐标绝对定位 */
+      width: 100%;
+      height: 100%;
     }
 
     .text {
       position: absolute;
       color: white;
       font-size: 1.4vw;
-      font-family: 'HYPixel', sans-serif;
-      font-weight: 400;
       letter-spacing: 0.1em;
       white-space: nowrap;
-      will-change: left; /* 动画优化 */
     }
 
     img {
@@ -100,8 +88,6 @@
       <div class="text" style="left: 541px; top: 954px;">亲爱的社区居民，欢迎您回家。</div>
       <div class="text" style="left: 199px; top: 980px;">亲爱的社区居民，欢迎您回家。</div>
     </div>
-    <img src="images/HappyCommunity.png" alt="Happy Community" />
-  </div>
 
   <script src="script.js"></script>
 </body>
