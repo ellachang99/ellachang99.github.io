@@ -1,0 +1,134 @@
+@font-face {
+  font-family: 'HYPixel';
+  src: url('fonts/HYPixel.woff') format('woff');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  font-family: 'HYPixel', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  position: relative;
+  transform-origin: top center;
+}
+
+.notice-title {
+  font-size: 64px;
+  font-weight: 400;
+  color: black;
+  letter-spacing: 5.12px;
+  line-height: 1.4;
+  position: absolute;
+  top: 158px;
+  left: 200px;
+}
+
+.notice-body-top {
+  position: absolute;
+  top: 159px;
+  left: 678px;
+  width: 562px;
+  font-size: 20px;
+  letter-spacing: 1.6px;
+  line-height: 1.6;
+  color: black;
+}
+
+.notice-body-bottom {
+  position: absolute;
+  top: 235px;
+  left: 678px;
+  width: 562px;
+  font-size: 20px;
+  letter-spacing: 1.6px;
+  line-height: 1.2;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notice-footer-line {
+  position: absolute;
+  top: 354px;
+  left: 678px;
+  width: 234px;
+  height: 0;
+  outline: 1px solid black;
+}
+
+.notice-from {
+  position: absolute;
+  top: 367px;
+  left: 678px;
+  font-size: 22px;
+  letter-spacing: 1.76px;
+  color: black;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px 30px;
+  width: 100%;
+  position: absolute;
+  top: 546px;
+  padding: 0 200px;
+}
+
+.grid .resident {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid .resident img {
+  width: 214px;
+  height: 275px;
+  object-fit: cover;
+  background: #d9d9d9;
+}
+
+.grid .resident .name {
+  margin-top: 20px;
+  font-size: 24px;
+  letter-spacing: 4.8px;
+  color: black;
+  text-align: center;
+}
+
+.char {
+  display: inline-block;
+  position: relative;
+  user-select: none;
+  color: inherit;
+  white-space: pre;
+}
+
+.char.scrambling {
+  color: #980000 !important;
+  animation: jitter 0.2s infinite;
+}
+
+@keyframes jitter {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(0.5px, -0.5px); }
+  50% { transform: translate(-0.5px, 0.5px); }
+  75% { transform: translate(0.5px, 0.5px); }
+  100% { transform: translate(-0.5px, -0.5px); }
+}
