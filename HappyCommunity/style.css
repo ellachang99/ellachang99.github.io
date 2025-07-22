@@ -12,10 +12,7 @@
 body {
   background: #fff;
   font-family: 'HYPixel', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
+  padding: 20px 0;
   overflow-x: hidden;
   cursor: crosshair;
 }
@@ -23,10 +20,79 @@ body {
 .container {
   width: 100%;
   max-width: 1440px;
+  margin: 0 auto;
   position: relative;
   transform-origin: top center;
 }
 
+/* 顶部横幅（固定比例 1440:810） */
+.top-hero {
+  position: relative;
+  width: 100vw; /* 改为始终占据浏览器宽度 */
+  height: auto;
+  aspect-ratio: 1440 / 810;
+  overflow: hidden;
+  font-family: 'HYPixel', sans-serif;
+}
+
+.top-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 保持等比裁剪填满 */
+  z-index: 0;
+}
+
+.top-hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+/* 三个绝对定位的内容区域 */
+.top-hero-box {
+  position: absolute;
+  left: 200px;
+  top: 185px;
+  width: 1040px;
+  height: 500px;
+  background: rgba(0, 51, 255, 0.6);
+  border-radius: 5px;
+}
+
+.top-hero-title {
+  position: absolute;
+  left: 200px;
+  top: 232px;
+  width: 1040px;
+  height: 122px;
+  text-align: center;
+  color: white;
+  font-size: 70px;
+  font-weight: 400;
+  letter-spacing: 5.6px;
+}
+
+.top-hero-text {
+  position: absolute;
+  left: 369px;
+  top: 354px;
+  width: 701px;
+  height: 231px;
+  text-align: center;
+  color: white;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  line-height: 1.6;
+}
+
+/* 居民栏原有样式 */
 .notice-title {
   font-size: 64px;
   font-weight: 400;
@@ -112,6 +178,7 @@ body {
   text-align: center;
 }
 
+/* 扰动文字样式 */
 .char {
   display: inline-block;
   position: relative;
