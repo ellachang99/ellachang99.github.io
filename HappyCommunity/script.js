@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const targets = [document.getElementById("notice-top"), document.getElementById("notice-bottom")];
+  const targets = [document.getElementById("notice-top"), document.getElementById("notice-bottom"), document.getElementById("top-hero-text")];
   const junkChars = "！？~%?…,# *'&℃$︿?（）死※·～＾".split("");
   const animating = new WeakSet();
   const scrambleSound = document.getElementById("scramble-sound");
