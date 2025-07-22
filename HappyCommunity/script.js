@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const targets = [document.getElementById("notice-top"), document.getElementById("notice-bottom")];
-  const junkChars = "！？。、，；：“”‘’（）【】《》·～＾".split("");
+  const junkChars = "！？~%?…,# *'&℃$︿?（）死※·～＾".split("");
   const animating = new WeakSet();
   const scrambleSound = document.getElementById("scramble-sound");
 
